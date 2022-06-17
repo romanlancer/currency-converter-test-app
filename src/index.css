@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  padding: 200px 0;
+  padding: 200px 10px;
   background-image: url(./assets/money_wallpaper.jpg);
   background-repeat: no-repeat;
   background-size: cover;

@@ -43,3 +43,9 @@ export const Main = styled.main`
   align-items: center;
   justify-content: center;
 `;
+
+export const Loader = styled.div`
+  position: fixed;
+  top: 40%;
+  left: 45%;
+`;

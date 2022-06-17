@@ -1,7 +1,8 @@
-import CurrencyInput from "components/CurrencyInput";
 import HryvnaExchange from "components/HryvnaExchange";
+import CurrencyInput from "components/CurrencyInput";
+
 import PuffLoader from "react-spinners/PuffLoader";
-import { Circle, Container, Title, Main } from "App.styled";
+import { Circle, Container, Title, Main, Loader } from "App.styled";
 import { TbExchange } from "react-icons/tb";
 import { useState, useEffect } from "react";
 
@@ -106,7 +107,9 @@ const App = () => {
             currency={currency2}
           />
         )}
-        <PuffLoader loading={loading} size={150} speedMultiplier={2} />
+        <Loader>
+          <PuffLoader loading={loading} size={150} speedMultiplier={2} />
+        </Loader>
       </Main>
     </Container>
   );
