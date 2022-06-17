@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Title = styled.h1`
+  padding: 5px 15px 10px;
+  border-radius: 10px;
   color: #eef;
+  background-color: #050c1fe1;
   text-align: center;
 `;
 
@@ -19,7 +22,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
   animation-name: fadeIn;
   animation-duration: 1000ms;
 `;
@@ -33,4 +35,11 @@ export const Circle = styled.div`
   height: 60px;
   border-radius: 50%;
   background-color: #050c1fe1;
+`;
+
+export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;

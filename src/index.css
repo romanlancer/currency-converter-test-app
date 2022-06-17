@@ -6,9 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000000;
 
-  padding: 50px;
+  padding: 200px 0;
   background-image: url(./assets/money_wallpaper.jpg);
   background-repeat: no-repeat;
   background-size: cover;

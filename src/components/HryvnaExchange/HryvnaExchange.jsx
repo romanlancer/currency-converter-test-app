@@ -1,5 +1,7 @@
 import { BsCurrencyDollar, BsCurrencyEuro } from "react-icons/bs";
 import { List, Item } from "./HryvnaExchange.styled";
+import PropTypes from "prop-types";
+
 const HryvnaExchange = ({ dollarExchange, euroExchange }) => {
   return (
     <List>
@@ -13,6 +15,11 @@ const HryvnaExchange = ({ dollarExchange, euroExchange }) => {
       </Item>
     </List>
   );
+};
+
+HryvnaExchange.propTypes = {
+  dollarExchange: PropTypes.func.isRequired,
+  euroExchange: PropTypes.func.isRequired,
 };
 
 export default HryvnaExchange;

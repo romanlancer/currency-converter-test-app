@@ -1,16 +1,18 @@
 import CurrencyInput from "components/CurrencyInput";
 import HryvnaExchange from "components/HryvnaExchange";
-import { Circle, Container, Title } from "App.styled";
+import PuffLoader from "react-spinners/PuffLoader";
+import { Circle, Container, Title, Main } from "App.styled";
 import { TbExchange } from "react-icons/tb";
 import { useState, useEffect } from "react";
 
 const App = () => {
   const [amount1, setAmount1] = useState(1);
   const [amount2, setAmount2] = useState(1);
-  const [currency1, setCurrency1] = useState("USD");
-  const [currency2, setCurrency2] = useState("EUR");
   const [currencyEUR, setCurrencyEUR] = useState("EUR");
   const [currencyUSD, setCurrencyUSD] = useState("USD");
+  const [currency1, setCurrency1] = useState("USD");
+  const [currency2, setCurrency2] = useState("UAH");
+
   const [loading, setLoading] = useState(false);
   const [rates, setRates] = useState([]);
   const BASE_URL = "https://api.apilayer.com/exchangerates_data/latest";
@@ -28,7 +30,7 @@ const App = () => {
       .then((response) => response.json())
       .then((result) => {
         setLoading(false);
-        console.log(result);
+
         setRates(result.rates);
       })
       .catch((error) => console.log("error", error));
@@ -37,6 +39,7 @@ const App = () => {
   useEffect(() => {
     const init = () => handleAmount1Change(1);
     rates && init();
+    // eslint-disable-next-line
   }, [rates]);
 
   const format = (number) => {
@@ -73,34 +76,38 @@ const App = () => {
     setCurrency2(currency2);
   };
 
-  if (loading) return <p>загружаем</p>;
-
   return (
     <Container>
-      <Title>Currency Converter</Title>
-      <HryvnaExchange
-        dollarExchange={setUsdToUahExchange}
-        euroExchange={setEurToUahExchange}
-      />
-      <CurrencyInput
-        onAmountChange={handleAmount1Change}
-        onCurrencyChange={handleCurrency1Change}
-        currencies={Object.keys(rates)}
-        amount={+amount1}
-        currency={currency1}
-      />
-      <Circle>
-        <TbExchange color={"#ddd"} size={45} />
-      </Circle>
-      {!isNaN(amount2) && (
-        <CurrencyInput
-          onAmountChange={handleAmount2Change}
-          onCurrencyChange={handleCurrency2Change}
-          currencies={Object.keys(rates)}
-          amount={+amount2}
-          currency={currency2}
+      <header>
+        <Title>Currency Converter</Title>
+        <HryvnaExchange
+          dollarExchange={setUsdToUahExchange}
+          euroExchange={setEurToUahExchange}
         />
-      )}
+      </header>
+
+      <Main>
+        <CurrencyInput
+          onAmountChange={handleAmount1Change}
+          onCurrencyChange={handleCurrency1Change}
+          currencies={Object.keys(rates)}
+          amount={+amount1}
+          currency={currency1}
+        />
+        <Circle>
+          <TbExchange color={"#ddd"} size={45} />
+        </Circle>
+        {!isNaN(amount2) && (
+          <CurrencyInput
+            onAmountChange={handleAmount2Change}
+            onCurrencyChange={handleCurrency2Change}
+            currencies={Object.keys(rates)}
+            amount={+amount2}
+            currency={currency2}
+          />
+        )}
+        <PuffLoader loading={loading} size={150} speedMultiplier={2} />
+      </Main>
     </Container>
   );
 };
